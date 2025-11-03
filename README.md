@@ -1,5 +1,10 @@
 ## What I Learned in CSCI152
 
+<p align="center">
+  <img src="assets/cs.png" alt="CSCI152" width="500"/>
+</p>
+
+
 This course gave me **hands-on experience in Java** while building projects that reinforced key **Object-Oriented Programming (OOP) concepts** and algorithmic thinking.
 
 **Key Java & OOP Concepts:**
