@@ -1,8 +1,9 @@
 <p align="center"><em>Simulate and solve a Rubik's Cube from your terminal!</em></p>
 
 <p align="center">
-  <img src="https://preview.free3d.com/img/2018/04/2269232928544261296/4cnyxa60.jpg" alt="Rubik's Cube" width="400"/>
+  <img src="assets/cube.png" alt="Rubik's Cube" width="400"/>
 </p>
+
 
 # Rubik's Cube Simulator | Java CLI
 
@@ -29,6 +30,7 @@ Compile both files:
 
 ```bash
 javac RubiksCube.java App.java
+
 
 
 
