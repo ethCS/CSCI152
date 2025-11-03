@@ -1,4 +1,7 @@
-Go Engine | 9x9 Console-Based Strategy Game
+<p align="center">
+  <em>Go Engine | 9x9 Console-Based Strategy Game</em>
+</p>
+
 
 <p align="center">
   <img src="https://ogs-forums.s3.dualstack.us-east-1.amazonaws.com/original/2X/9/9b81305db985ca8c641d41577b8464f647301c96.jpeg" alt="9x9 Go Board" width="400"/>
@@ -9,7 +12,7 @@ Go Engine | 9x9 Console-Based Strategy Game
 </p>
 
 
-A sophisticated Java implementation of Go, engineered for two players on a 9x9 board. This project is more than just a game—it’s a showcase of algorithmic design and software craftsmanship:
+A sophisticated Java implementation of Go written during my CSCI152 class, engineered for two players on a 9x9 board. This project is more than just a game—it’s a showcase of algorithmic design and software craftsmanship:
 
 Smart Game Logic: Fully implements stone capturing, group life detection, and liberties using recursive depth-first search.
 
