@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class RubiksCube {
     // Each face has its own array
     private char[][] red_face = this.create_rubiks_cube_face('r');
@@ -16,7 +18,7 @@ public class RubiksCube {
         this.print_rubiks_cube_face(this.white_face);
     }
 
-    public void move(String arg) {
+    public void move(String arg) throws Exception {
         char[] temp_b;
         char[] temp_r;
         char[] temp_g;
@@ -67,6 +69,7 @@ public class RubiksCube {
                 this.set_column(this.green_face, 0, this.reverse(temp_r)); //backwards
                 this.set_column(this.orange_face,2, this.reverse(temp_g));
                 break;
+
             case "l":
                 this.right_turn(this.yellow_face);
                 temp_b = this.get_column(this.blue_face, 0);
@@ -79,14 +82,31 @@ public class RubiksCube {
                 this.set_column(this.green_face, 2, this.reverse(temp_o));
                 this.set_column(this.orange_face,0, temp_b);
                 break;
+
             case "f":
                 this.right_turn(this.blue_face);
-                
+                temp_y = this.get_row(this.yellow_face, 2);
+                temp_r = this.get_column(this.red_face, 0);
+                temp_w = this.get_row(this.white_face, 0);
+                temp_o = this.get_column(this.orange_face, 2);
+
+                this.set_row(this.yellow_face, 2, this.reverse(temp_o));
+                this.set_column(this.red_face, 0, temp_y);
+                this.set_row(this.white_face, 0, this.reverse(temp_r));
+                this.set_column(this.orange_face, 2, temp_w);
                 break;
 
             case "b":
                 this.right_turn(this.green_face);
+                temp_y = this.get_row(this.yellow_face, 0);
+                temp_r = this.get_column(this.red_face, 2);
+                temp_w = this.get_row(this.white_face, 2);
+                temp_o = this.get_column(this.orange_face, 0);
 
+                this.set_row(this.yellow_face, 0, temp_r);
+                this.set_column(this.red_face, 2, this.reverse(temp_w));
+                this.set_row(this.white_face, 2, this.reverse(temp_o));
+                this.set_column(this.orange_face, 0, this.reverse(temp_y));
                 break;
 
             case "u'":
@@ -140,19 +160,54 @@ public class RubiksCube {
                 this.set_column(this.green_face, 2, this.reverse(temp_r)); 
                 this.set_column(this.orange_face,0, this.reverse(temp_g));
                 break;
-
+            //i'm using both rows AND columns for the front and back of the cube.
             case "f'":
                 this.left_turn(this.blue_face);
+                temp_y = this.get_row(this.yellow_face, 2);
+                temp_r = this.get_column(this.red_face, 0);
+                temp_w = this.get_row(this.white_face, 0);
+                temp_o = this.get_column(this.orange_face, 2);
+
+                this.set_row(this.yellow_face, 2, temp_r);
+                this.set_column(this.red_face, 0, this.reverse(temp_w));
+                this.set_row(this.white_face, 0, temp_o);
+                this.set_column(this.orange_face, 2, this.reverse(temp_y));
                 break;
 
             case "b'":
                 this.left_turn(this.green_face);
+                temp_y = this.get_row(this.yellow_face, 0);
+                temp_r = this.get_column(this.red_face, 2);
+                temp_w = this.get_row(this.white_face, 2);
+                temp_o = this.get_column(this.orange_face, 0);
+
+                this.set_row(this.yellow_face, 0, this.reverse(temp_o));
+                this.set_column(this.red_face, 2, temp_y);
+                this.set_row(this.white_face, 2, temp_r);
+                this.set_column(this.orange_face, 0, this.reverse(temp_w));
+                break;
+
+            case "q":
+                System.out.println("Quitting...");
+                break;
+
+            case "rng":
+                this.scramble_cube();
                 break;
 
             default:
-                System.out.println("Invalid input/syntax for attempted cube move");
-                System.out.println("Please use: (u, d, r, l, f, b) or (u', d', r', l', f', b') ");
-                break;
+                throw new Exception("Invalid move.");
+        }
+    }
+
+    private void scramble_cube() throws Exception{
+        String[] possible_moves = new String[] {"u", "d", "r", "l", "f", "b", "u'", "d'", "r'", "l'", "f'", "b'"};
+        Random rand = new Random();
+        int number_of_moves = rand.nextInt(100);
+
+        for(int i=0; i < number_of_moves; i++){
+            int rng_var = rand.nextInt(possible_moves.length);
+            this.move(possible_moves[rng_var]);
         }
     }
 
